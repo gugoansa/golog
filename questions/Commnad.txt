@@ -69,6 +69,7 @@ git rebase // git checkout feature //Aplica todo el istorial de comits de esa ra
 // y luego //git rebase main Esto mueve todos los commits de feature y los coloca encima de los últimos commits de main, lo que da como resultado un historial lineal.
 ///**OJO NUNCA HACER REBASE SOBRE COMMITS SUBIDOS YA A LA RAMA REMOTA, SI NO HARA PERDER EL HISTORIAL DE TODO EL EQUIPO**/// No sobreescribe tu rama completamente.
 //En lugar de eso, aplica los commits de tu rama sobre la rama de destino (por ejemplo, main), de modo que los cambios de tu rama aparecen como si se hubieran hecho después de los cambios más recientes de la otra rama.
+
 git rebase -i --> git rebase -i HEAD~5 //ste comando le dice a Git que rebases los últimos 5 commits (los 5 commits más recientes, empezando desde HEAD). En este caso, se reescriben solo esos 5 commits, y puedes decidir qué hacer con ellos: editarlos, combinarlos, o incluso eliminarlos.
 git checkout feature --> luego  git rebase main //rebasa todo main dejando todos los comit de feature en main como nuevo histgorico de commits.
 git diff HEAD//Muestra las diferencias entre los archivos en tu directorio de trabajo y el área de staging, o entre tu rama actual y otra. Es útil para revisar qué cambios se han hecho antes de hacer un commit.
