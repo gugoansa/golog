@@ -41,8 +41,19 @@ rm -rf node_modules package-lock.json //Eliminar varias cosas a la vez
 
 git branch //para ver todas las ramas del repositorio
 git branch -r //Este comando te muestra todas las ramas remotas, si quieres saber la principal, lee el readme.md
-//HEAD en Git es un puntero que siempre señala el último commit en la rama en la que estás trabajando. Es como un "referente" que dice "este es el commit actual de la rama activa". Por ejemplo, si estás en la rama main, HEAD apunta al último commit de main.
+git checkout main //cambia a la rama en mencion MAIN
+git switch -c nombre-de-tu-nueva-rama  || git checkout -b feature-login // crean ramas
+git branch -m nuevo-nombre // cambiar nombre a rama
+git branch -m nombre-antiguo nuevo-nombre // renombrar una rama que no estoy usando o donde no estoy posisionado 
+git push origin --delete feature-login // eliminar una rama remota
+git branch -d nombre-de-la-rama // eliminar una rama
+git branch -D nombre-de-la-rama // elimina la rmaa uan sin fusionarla
+
+
+
+git push -u origin nombre-de-tu-rama //subir la rama a remoto
 git reset --soft HEAD~1 //Deshace el último commit, pero mantiene los cambios en el área de preparación (staging area). Es como si "deshices" el commit, pero los cambios se quedan listos para volver a ser cometidos.
+//HEAD en Git es un puntero que siempre señala el último commit en la rama en la que estás trabajando. Es como un "referente" que dice "este es el commit actual de la rama activa". Por ejemplo, si estás en la rama main, HEAD apunta al último commit de main.
 git reset --mixed HEAD~1 //(que es el valor predeterminado si no especificas opción): Deshace el último commit, elimina los cambios del área de preparación, pero mantiene los archivos modificados en tu directorio de trabajo. Esto significa que los cambios todavía están allí, pero tendrás que volver a agregarlos al staging (git add) si quieres volver a hacer el commit.
 git reset ruta/del/archivo //Eliminar argio que se subio
 git reset HEAD~1 //Para deshacer el commit pero conservar los cambios localmente
@@ -52,7 +63,6 @@ git log // Ver historial de commits
 git log --oneline //ver historial solo de a una linea sin paginador extenso
 git reflog // recupera un git perdido
 git merge // git merge es un comando fundamental en Git que se usa para combinar cambios de diferentes ramas. Su principal función es integrar los cambios de una rama en otra. Se utiliza, generalmente, cuando estás trabajando con varias ramas y necesitas incorporar los cambios hechos en una rama secundaria (o de características) a tu rama principal (como main o master).
-git checkout main //cambia a la rama en mencion MAIN
 git merge feature //Combina el ultimo commit de feature en la rama principal, si hay cambios en las dos, se crea un nuevo commit dejando las dos ramas unificadas.
 git rebase // git checkout feature //Aplica todo el istorial de comits de esa rama a la rama en destino 
 // y luego //git rebase main Esto mueve todos los commits de feature y los coloca encima de los últimos commits de main, lo que da como resultado un historial lineal.
