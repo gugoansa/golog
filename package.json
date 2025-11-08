@@ -1,0 +1,23 @@
+{
+  "name": "golog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "javascript": "^1.0.0",
+    "latest": "^0.2.0",
+    "npm": "^2.15.12",
+    "playwright": "^1.56.1",
+    "playwright-core": "^1.56.1",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
