@@ -39,7 +39,8 @@ rm -f package-lock.json //Eliminar un archivo
 rm -rf node_modules package-lock.json //Eliminar varias cosas a la vez
 
 
-
+git branch -vv // muestra cambios ramas locales vs remoto
+git log --oneline --graph --decorate --all // muestra todas las ramas locales y remotas visualmente
 git push --all origin //subir todas las rama al remoto 
 git push origin rama1 rama2 rama3 // subir rama por rama al remoto
 git branch //para ver todas las ramas del repositorio
