@@ -82,8 +82,12 @@ git tag v1.0.0 //Tagging es una forma de marcar puntos específicos en el histor
 git tag //listar tags
 git push origin v1.0.0 // subir un tag al repositorio
 git cherry-pick <commit-hash> // Este comando te permite aplicar un commit específico de otra rama a tu rama actual sin hacer un merge completo. Es útil cuando solo deseas traer cambios de un commit específico sin todo el historial de la rama.
-
-
+git checkout 1234abcd5678efgh9012ijklmnopqrstuv // hace roll back ojo depende del hash que pongas adonde vas a volver.
+git reset --hard 1234abcd5678efgh9012ijklmnopqrstuv //--hard: Esto elimina los cambios que has hecho después del commit al que estás regresando, tanto en el historial de commits como en el directorio de trabajo (archivos en tu computadora).
+git reset --soft <commit>: Mantiene los cambios en el área de staging (listos para hacer commit).
+git reset --mixed <commit>: Mantiene los cambios en el directorio de trabajo, pero los quita del área de staging (como si no estuvieran listos para hacer commit).
+git push -f origin main // esto forza la subida del comit  ya que puede tener problemas con el historial de versiones de git al hacer ROLL BACK
+ 
 
 
 
