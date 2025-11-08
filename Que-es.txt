@@ -1,0 +1,3 @@
+Node = motor que ejecuta JavaScript.
+
+npm = herramienta que instala y administra paquetes/librerías que Node necesita.
