@@ -39,7 +39,39 @@ rm -f package-lock.json //Eliminar un archivo
 rm -rf node_modules package-lock.json //Eliminar varias cosas a la vez
 
 
+git branch //para ver todas las ramas del repositorio
+git branch -r //Este comando te muestra todas las ramas remotas, si quieres saber la principal, lee el readme.md
+//HEAD en Git es un puntero que siempre señala el último commit en la rama en la que estás trabajando. Es como un "referente" que dice "este es el commit actual de la rama activa". Por ejemplo, si estás en la rama main, HEAD apunta al último commit de main.
+git reset --soft HEAD~1 //Deshace el último commit, pero mantiene los cambios en el área de preparación (staging area). Es como si "deshices" el commit, pero los cambios se quedan listos para volver a ser cometidos.
+git reset --mixed HEAD~1 //(que es el valor predeterminado si no especificas opción): Deshace el último commit, elimina los cambios del área de preparación, pero mantiene los archivos modificados en tu directorio de trabajo. Esto significa que los cambios todavía están allí, pero tendrás que volver a agregarlos al staging (git add) si quieres volver a hacer el commit.
+git reset ruta/del/archivo //Eliminar argio que se subio
+git reset HEAD~1 //Para deshacer el commit pero conservar los cambios localmente
+git reset --hard HEAD~1 //Deshace el último commit y descarta completamente los cambios, tanto en el área de preparación como en tu directorio de trabajo. Esto es destructivo, y pierdes todo el trabajo no comprometido.
+git commit --amend --> luego git add <archivo> // agregar el ammend Solo afecta el último commit subido, algo asi como sobreescribirlo.
+git log --oneline // Ver historial de commits
+git reflog // recupera un git perdido
+git merge // git merge es un comando fundamental en Git que se usa para combinar cambios de diferentes ramas. Su principal función es integrar los cambios de una rama en otra. Se utiliza, generalmente, cuando estás trabajando con varias ramas y necesitas incorporar los cambios hechos en una rama secundaria (o de características) a tu rama principal (como main o master).
+git checkout main //cambia a la rama en mencion MAIN
+git merge feature //Combina el ultimo commit de feature en la rama principal, si hay cambios en las dos, se crea un nuevo commit dejando las dos ramas unificadas.
+git rebase // git checkout feature //Aplica todo el istorial de comits de esa rama a la rama en destino 
+// y luego //git rebase main Esto mueve todos los commits de feature y los coloca encima de los últimos commits de main, lo que da como resultado un historial lineal.
+///**OJO NUNCA HACER REBASE SOBRE COMMITS SUBIDOS YA A LA RAMA REMOTA, SI NO HARA PERDER EL HISTORIAL DE TODO EL EQUIPO**/// No sobreescribe tu rama completamente.
+//En lugar de eso, aplica los commits de tu rama sobre la rama de destino (por ejemplo, main), de modo que los cambios de tu rama aparecen como si se hubieran hecho después de los cambios más recientes de la otra rama.
+git rebase -i --> git rebase -i HEAD~5 //ste comando le dice a Git que rebases los últimos 5 commits (los 5 commits más recientes, empezando desde HEAD). En este caso, se reescriben solo esos 5 commits, y puedes decidir qué hacer con ellos: editarlos, combinarlos, o incluso eliminarlos.
+git checkout feature --> luego  git rebase main //rebasa todo main dejando todos los comit de feature en main como nuevo histgorico de commits.
+git diff HEAD//Muestra las diferencias entre los archivos en tu directorio de trabajo y el área de staging, o entre tu rama actual y otra. Es útil para revisar qué cambios se han hecho antes de hacer un commit.
+git stash //Stash se usa para guardar temporalmente cambios que no quieres comprometer aún. Es como una "cajita de cambios" donde puedes almacenar el trabajo en progreso y volver a él más tarde. Es útil cuando necesitas cambiar de contexto rápidamente sin perder tu trabajo.
+git stash list //Para ver los stashes guardados
+git stash pop // Para recuperar los cambios guardados
+git stash drop //borrar los stash
+git fetch // git fetch trae cambios del repositorio remoto a tu repositorio local, pero no los fusiona en tu rama actual. Es útil para obtener las actualizaciones más recientes de otros colaboradores sin alterar tu trabajo local.
+git tag v1.0.0 //Tagging es una forma de marcar puntos específicos en el historial, generalmente para indicar versiones de lanzamiento o hitos importantes.
+git tag //listar tags
+git push origin v1.0.0 // subir un tag al repositorio
+git cherry-pick <commit-hash> // Este comando te permite aplicar un commit específico de otra rama a tu rama actual sin hacer un merge completo. Es útil cuando solo deseas traer cambios de un commit específico sin todo el historial de la rama.
 
 
 
 
+
+ 
