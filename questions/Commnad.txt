@@ -48,7 +48,8 @@ git reset ruta/del/archivo //Eliminar argio que se subio
 git reset HEAD~1 //Para deshacer el commit pero conservar los cambios localmente
 git reset --hard HEAD~1 //Deshace el último commit y descarta completamente los cambios, tanto en el área de preparación como en tu directorio de trabajo. Esto es destructivo, y pierdes todo el trabajo no comprometido.
 git commit --amend --> luego git add <archivo> // agregar el ammend Solo afecta el último commit subido, algo asi como sobreescribirlo.
-git log --oneline // Ver historial de commits
+git log // Ver historial de commits
+git log --oneline //ver historial solo de a una linea sin paginador extenso
 git reflog // recupera un git perdido
 git merge // git merge es un comando fundamental en Git que se usa para combinar cambios de diferentes ramas. Su principal función es integrar los cambios de una rama en otra. Se utiliza, generalmente, cuando estás trabajando con varias ramas y necesitas incorporar los cambios hechos en una rama secundaria (o de características) a tu rama principal (como main o master).
 git checkout main //cambia a la rama en mencion MAIN
