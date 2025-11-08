@@ -21,6 +21,7 @@ npx playwright install --with-deps // Instala navegadores si se ejecuta desde li
 npx playwright test //Ejecuta test
 npx playwright show-report //Abre el reporte visual
 
+npm cache clean --force //Elimina la cache de node - Node guarda la cache para facilitar instalaciones
 
 
 pwd // Muestra la ruta donde estas , sirve para ver la path antes de borrar algo
