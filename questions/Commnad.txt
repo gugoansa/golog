@@ -1,3 +1,4 @@
+NODE/NPM/NPX
 node -v
 npm install -g npm@latest
 npm -v
@@ -20,12 +21,11 @@ npx playwright install // Instala navegadores ////npm install -g playwright // g
 npx playwright install --with-deps // Instala navegadores si se ejecuta desde linux
 npx playwright test //Ejecuta test
 npx playwright show-report //Abre el reporte visual
-
 npm cache clean --force //Elimina la cache de node - Node guarda la cache para facilitar instalaciones
-
-
 pwd // Muestra la ruta donde estas , sirve para ver la path antes de borrar algo
 
+
+COMMANDS
 Windows (PowerShell)
 Remove-Item -Recurse -Force node_modules //Elimina carpeta completa
 Remove-Item -Force package-lock.json // Elimina un archivo
@@ -39,6 +39,7 @@ rm -f package-lock.json //Eliminar un archivo
 rm -rf node_modules package-lock.json //Eliminar varias cosas a la vez
 
 
+GIT
 git branch -vv // muestra cambios ramas locales vs remoto
 git log --oneline --graph --decorate --all // muestra todas las ramas locales y remotas visualmente
 git push --all origin //subir todas las rama al remoto 
@@ -81,8 +82,12 @@ git tag v1.0.0 //Tagging es una forma de marcar puntos específicos en el histor
 git tag //listar tags
 git push origin v1.0.0 // subir un tag al repositorio
 git cherry-pick <commit-hash> // Este comando te permite aplicar un commit específico de otra rama a tu rama actual sin hacer un merge completo. Es útil cuando solo deseas traer cambios de un commit específico sin todo el historial de la rama.
-
-
+git checkout 1234abcd5678efgh9012ijklmnopqrstuv // hace roll back ojo depende del hash que pongas adonde vas a volver.
+git reset --hard 1234abcd5678efgh9012ijklmnopqrstuv //--hard: Esto elimina los cambios que has hecho después del commit al que estás regresando, tanto en el historial de commits como en el directorio de trabajo (archivos en tu computadora).
+git reset --soft <commit>: Mantiene los cambios en el área de staging (listos para hacer commit).
+git reset --mixed <commit>: Mantiene los cambios en el directorio de trabajo, pero los quita del área de staging (como si no estuvieran listos para hacer commit).
+git push -f origin main // esto forza la subida del comit  ya que puede tener problemas con el historial de versiones de git al hacer ROLL BACK
+ 
 
 
 
