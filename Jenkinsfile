@@ -1,8 +1,10 @@
+//Windows Version
 pipeline {
     agent any
 
     triggers {
-        cron('H 0 * * *') // se ejecuta todos los días a medianoche (UTC)
+        // 🕐 Ejecutar todos los días a las 9 AM
+        cron('H 9 * * *')
     }
 
     stages {
@@ -14,35 +16,46 @@ pipeline {
 
         stage('Setup Node.js') {
             steps {
-                // instala Node.js 18
-                sh 'curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -'
-                sh 'sudo apt-get install -y nodejs'
+                bat '''
+                if not exist "C:\\Program Files\\nodejs\\node.exe" (
+                    echo Node.js no encontrado. Descargalo e instalalo manualmente desde https://nodejs.org/en/download/windows
+                    exit /b 1
+                ) else (
+                    node -v
+                    npm -v
+                )
+                '''
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci'
-                sh 'npx playwright install --with-deps'
+                bat '''
+                cd playwright
+                npm install
+                '''
             }
         }
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright test'
+                bat '''
+                cd playwright
+                npx playwright test --reporter=list
+                '''
             }
         }
 
         stage('Archive Report') {
             steps {
-                archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+                junit 'playwright/test-results/*.xml'
             }
         }
     }
 
     post {
         always {
-            junit 'playwright-report/results.xml'
+            echo '✅ Pipeline finished.'
         }
     }
 }
