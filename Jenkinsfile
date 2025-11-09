@@ -39,12 +39,19 @@ pipeline {
             }
         }
 
-        stage('Run Playwright Tests') {
+        /*stage('Run Playwright Tests') {
             steps {
                 // Genera reportes HTML + JUnit XML
                 bat 'npx playwright test --reporter="html,junit"'
             }
+        }*/
+        stage('Run Playwright Tests') {
+            steps {
+             // Usa la config predeterminada, que ya tiene HTML + JUnit
+              bat 'npx playwright test'
+             }
         }
+
 
         stage('Archive Reports') {
             steps {
