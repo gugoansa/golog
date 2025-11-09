@@ -14,7 +14,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/gugoansa/golog.git'
+                // Clona la rama main explícitamente
+                git branch: 'main', url: 'https://github.com/gugoansa/golog.git'
             }
         }
 
@@ -38,19 +39,25 @@ pipeline {
             }
         }
 
+        /*stage('Run Playwright Tests') {
+            steps {
+                // Genera reportes HTML + JUnit XML
+                bat 'npx playwright test --reporter="html,junit"'
+            }
+        }*/
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test'
-            }
+             // Usa la config predeterminada, que ya tiene HTML + JUnit
+              bat 'npx playwright test'
+             }
         }
+
 
         stage('Archive Reports') {
             steps {
-                // Guarda el HTML para verlo o descargarlo
+                // Ajusta la ruta de los reportes
                 archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
-
-                // Registra el XML para que Jenkins lea los resultados
-                junit 'results.xml'
+                junit 'playwright-report/results.xml'
             }
         }
     }
