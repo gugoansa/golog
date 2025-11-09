@@ -1,16 +1,20 @@
-//Windows Version
 pipeline {
     agent any
 
+    // 🕒 Programación automática: cada día a las 3:00 AM
     triggers {
-        // 🕐 Ejecutar todos los días a las 9 AM
-        cron('H 9 * * *')
+        cron('0 3 * * *')
+    }
+
+    environment {
+        CI = 'true' // asegura que Playwright corra en modo headless
     }
 
     stages {
+
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/gugoansa/golog.git'
+                git 'https://github.com/gugoansa/golog.git'
             }
         }
 
@@ -18,7 +22,7 @@ pipeline {
             steps {
                 bat '''
                 if not exist "C:\\Program Files\\nodejs\\node.exe" (
-                    echo Node.js no encontrado. Descargalo e instalalo manualmente desde https://nodejs.org/en/download/windows
+                    echo Node.js no encontrado. Descargalo e instalalo manualmente desde https://nodejs.org/en/download/windows  
                     exit /b 1
                 ) else (
                     node -v
@@ -30,32 +34,33 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat '''
-                cd playwright
-                npm install
-                '''
+                bat 'npm ci'
             }
         }
 
         stage('Run Playwright Tests') {
             steps {
-                bat '''
-                cd playwright
-                npx playwright test --reporter=list
-                '''
+                bat 'npx playwright test'
             }
         }
 
-        stage('Archive Report') {
+        stage('Archive Reports') {
             steps {
-                junit 'playwright/test-results/*.xml'
+                // Guarda el HTML para verlo o descargarlo
+                archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+
+                // Registra el XML para que Jenkins lea los resultados
+                junit 'results.xml'
             }
         }
     }
 
     post {
         always {
-            echo '✅ Pipeline finished.'
+            echo "✅ Pipeline finished."
+        }
+        failure {
+            echo "❌ Build failed. Revisa los logs o el reporte HTML."
         }
     }
 }
