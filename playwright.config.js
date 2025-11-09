@@ -30,10 +30,12 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
-    headless: false,
+    headless: process.env.CI === 'true', // true en GitHub Actions, false local
     viewport: { width: 1280, height: 720 },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure', // toma captura solo si falla //'on', 'off', 'only-on-failure'
+    video: 'retain-on-failure',    // graba video solo si falla //'on', 'off', 'only-on-failure'
   },
 
   /* Configure projects for major browsers */
