@@ -29,7 +29,7 @@ export default defineConfig({
   reporter: [
     ['list'], // opcional, para ver en consola
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
-    ['junit', { outputFile: 'results.xml' }]
+    ['junit', { outputFile: 'playwright-report/results.xml' }]
   ],
    /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
